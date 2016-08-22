@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Items" table="items" catalog="mydb">
+        <id name="itemid" type="long">
+            <column name="itemid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hosts" class="cn.com.esrichina.ServerMonitor.domain.Hosts" fetch="select">
+            <column name="hostid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="valuemaps" class="cn.com.esrichina.ServerMonitor.domain.Valuemaps" fetch="select">
+            <column name="valuemapid" />
+        </many-to-one>
+        <many-to-one name="interfaceid" class="cn.com.esrichina.ServerMonitor.domain.Interface" fetch="select">
+            <column name="interfaceid" />
+        </many-to-one>
+        <many-to-one name="items" class="cn.com.esrichina.ServerMonitor.domain.Items" fetch="select">
+            <column name="templateid" />
+        </many-to-one>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="snmpCommunity" type="string">
+            <column name="snmp_community" length="64" not-null="true" />
+        </property>
+        <property name="snmpOid" type="string">
+            <column name="snmp_oid" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="key" type="string">
+            <column name="key_" not-null="true" />
+        </property>
+        <property name="delay" type="int">
+            <column name="delay" not-null="true" />
+        </property>
+        <property name="history" type="int">
+            <column name="history" not-null="true" />
+        </property>
+        <property name="trends" type="int">
+            <column name="trends" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="valueType" type="int">
+            <column name="value_type" not-null="true" />
+        </property>
+        <property name="trapperHosts" type="string">
+            <column name="trapper_hosts" not-null="true" />
+        </property>
+        <property name="units" type="string">
+            <column name="units" not-null="true" />
+        </property>
+        <property name="multiplier" type="int">
+            <column name="multiplier" not-null="true" />
+        </property>
+        <property name="delta" type="int">
+            <column name="delta" not-null="true" />
+        </property>
+        <property name="snmpv3Securityname" type="string">
+            <column name="snmpv3_securityname" length="64" not-null="true" />
+        </property>
+        <property name="snmpv3Securitylevel" type="int">
+            <column name="snmpv3_securitylevel" not-null="true" />
+        </property>
+        <property name="snmpv3Authpassphrase" type="string">
+            <column name="snmpv3_authpassphrase" length="64" not-null="true" />
+        </property>
+        <property name="snmpv3Privpassphrase" type="string">
+            <column name="snmpv3_privpassphrase" length="64" not-null="true" />
+        </property>
+        <property name="formula" type="string">
+            <column name="formula" not-null="true" />
+        </property>
+        <property name="error" type="string">
+            <column name="error" length="2048" not-null="true" />
+        </property>
+        <property name="lastlogsize" type="long">
+            <column name="lastlogsize" not-null="true" />
+        </property>
+        <property name="logtimefmt" type="string">
+            <column name="logtimefmt" length="64" not-null="true" />
+        </property>
+        <property name="delayFlex" type="string">
+            <column name="delay_flex" not-null="true" />
+        </property>
+        <property name="params" type="string">
+            <column name="params" length="65535" not-null="true" />
+        </property>
+        <property name="ipmiSensor" type="string">
+            <column name="ipmi_sensor" length="128" not-null="true" />
+        </property>
+        <property name="dataType" type="int">
+            <column name="data_type" not-null="true" />
+        </property>
+        <property name="authtype" type="int">
+            <column name="authtype" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="64" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="64" not-null="true" />
+        </property>
+        <property name="publickey" type="string">
+            <column name="publickey" length="64" not-null="true" />
+        </property>
+        <property name="privatekey" type="string">
+            <column name="privatekey" length="64" not-null="true" />
+        </property>
+        <property name="mtime" type="int">
+            <column name="mtime" not-null="true" />
+        </property>
+        <property name="flags" type="int">
+            <column name="flags" not-null="true" />
+        </property>
+        <property name="port" type="string">
+            <column name="port" length="64" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="inventoryLink" type="int">
+            <column name="inventory_link" not-null="true" />
+        </property>
+        <property name="lifetime" type="string">
+            <column name="lifetime" length="64" not-null="true" />
+        </property>
+        <property name="snmpv3Authprotocol" type="int">
+            <column name="snmpv3_authprotocol" not-null="true" />
+        </property>
+        <property name="snmpv3Privprotocol" type="int">
+            <column name="snmpv3_privprotocol" not-null="true" />
+        </property>
+        <property name="state" type="int">
+            <column name="state" not-null="true" />
+        </property>
+        <property name="snmpv3Contextname" type="string">
+            <column name="snmpv3_contextname" not-null="true" />
+        </property>
+        <property name="evaltype" type="int">
+            <column name="evaltype" not-null="true" />
+        </property>
+        <set name="functionses" table="functions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Functions" />
+        </set>
+        <set name="httptestitems" table="httptestitem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Httptestitem" />
+        </set>
+        <set name="hostDiscoveries" table="host_discovery" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="parent_itemid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.HostDiscovery" />
+        </set>
+        <set name="itemConditions" table="item_condition" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ItemCondition" />
+        </set>
+        <set name="itemDiscoveriesForItemid" table="item_discovery" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ItemDiscovery" />
+        </set>
+        <set name="itemApplicationPrototypes" table="item_application_prototype" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ItemApplicationPrototype" />
+        </set>
+        <set name="itemDiscoveriesForParentItemid" table="item_discovery" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="parent_itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ItemDiscovery" />
+        </set>
+        <set name="applicationPrototypes" table="application_prototype" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ApplicationPrototype" />
+        </set>
+        <set name="graphsesForYminItemid" table="graphs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ymin_itemid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Graphs" />
+        </set>
+        <set name="graphsesForYmaxItemid" table="graphs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ymax_itemid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Graphs" />
+        </set>
+        <set name="graphsItemses" table="graphs_items" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.GraphsItems" />
+        </set>
+        <set name="httpstepitems" table="httpstepitem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Httpstepitem" />
+        </set>
+        <set name="itemsApplicationses" table="items_applications" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="itemid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ItemsApplications" />
+        </set>
+        <set name="itemses" table="items" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="templateid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Items" />
+        </set>
+    </class>
+</hibernate-mapping>

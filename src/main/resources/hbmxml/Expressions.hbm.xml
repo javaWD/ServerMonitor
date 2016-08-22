@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Expressions" table="expressions" catalog="mydb">
+        <id name="expressionid" type="long">
+            <column name="expressionid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="regexps" class="cn.com.esrichina.ServerMonitor.domain.Regexps" fetch="select">
+            <column name="regexpid" not-null="true" />
+        </many-to-one>
+        <property name="expression" type="string">
+            <column name="expression" not-null="true" />
+        </property>
+        <property name="expressionType" type="int">
+            <column name="expression_type" not-null="true" />
+        </property>
+        <property name="expDelimiter" type="string">
+            <column name="exp_delimiter" length="1" not-null="true" />
+        </property>
+        <property name="caseSensitive" type="int">
+            <column name="case_sensitive" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

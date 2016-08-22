@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.ItemCondition" table="item_condition" catalog="mydb">
+        <id name="itemConditionid" type="long">
+            <column name="item_conditionid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="items" class="cn.com.esrichina.ServerMonitor.domain.Items" fetch="select">
+            <column name="itemid" not-null="true" />
+        </many-to-one>
+        <property name="operator" type="int">
+            <column name="operator" not-null="true" />
+        </property>
+        <property name="macro" type="string">
+            <column name="macro" length="64" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

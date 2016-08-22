@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Config" table="config" catalog="mydb">
+        <id name="configid" type="long">
+            <column name="configid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usrgrp" class="cn.com.esrichina.ServerMonitor.domain.Usrgrp" fetch="select">
+            <column name="alert_usrgrpid" />
+        </many-to-one>
+        <many-to-one name="groups" class="cn.com.esrichina.ServerMonitor.domain.Groups" fetch="select">
+            <column name="discovery_groupid" not-null="true" />
+        </many-to-one>
+        <property name="refreshUnsupported" type="int">
+            <column name="refresh_unsupported" not-null="true" />
+        </property>
+        <property name="workPeriod" type="string">
+            <column name="work_period" length="100" not-null="true" />
+        </property>
+        <property name="eventAckEnable" type="int">
+            <column name="event_ack_enable" not-null="true" />
+        </property>
+        <property name="eventExpire" type="int">
+            <column name="event_expire" not-null="true" />
+        </property>
+        <property name="eventShowMax" type="int">
+            <column name="event_show_max" not-null="true" />
+        </property>
+        <property name="defaultTheme" type="string">
+            <column name="default_theme" length="128" not-null="true" />
+        </property>
+        <property name="authenticationType" type="int">
+            <column name="authentication_type" not-null="true" />
+        </property>
+        <property name="ldapHost" type="string">
+            <column name="ldap_host" not-null="true" />
+        </property>
+        <property name="ldapPort" type="int">
+            <column name="ldap_port" not-null="true" />
+        </property>
+        <property name="ldapBaseDn" type="string">
+            <column name="ldap_base_dn" not-null="true" />
+        </property>
+        <property name="ldapBindDn" type="string">
+            <column name="ldap_bind_dn" not-null="true" />
+        </property>
+        <property name="ldapBindPassword" type="string">
+            <column name="ldap_bind_password" length="128" not-null="true" />
+        </property>
+        <property name="ldapSearchAttribute" type="string">
+            <column name="ldap_search_attribute" length="128" not-null="true" />
+        </property>
+        <property name="dropdownFirstEntry" type="int">
+            <column name="dropdown_first_entry" not-null="true" />
+        </property>
+        <property name="dropdownFirstRemember" type="int">
+            <column name="dropdown_first_remember" not-null="true" />
+        </property>
+        <property name="maxInTable" type="int">
+            <column name="max_in_table" not-null="true" />
+        </property>
+        <property name="searchLimit" type="int">
+            <column name="search_limit" not-null="true" />
+        </property>
+        <property name="severityColor0" type="string">
+            <column name="severity_color_0" length="6" not-null="true" />
+        </property>
+        <property name="severityColor1" type="string">
+            <column name="severity_color_1" length="6" not-null="true" />
+        </property>
+        <property name="severityColor2" type="string">
+            <column name="severity_color_2" length="6" not-null="true" />
+        </property>
+        <property name="severityColor3" type="string">
+            <column name="severity_color_3" length="6" not-null="true" />
+        </property>
+        <property name="severityColor4" type="string">
+            <column name="severity_color_4" length="6" not-null="true" />
+        </property>
+        <property name="severityColor5" type="string">
+            <column name="severity_color_5" length="6" not-null="true" />
+        </property>
+        <property name="severityName0" type="string">
+            <column name="severity_name_0" length="32" not-null="true" />
+        </property>
+        <property name="severityName1" type="string">
+            <column name="severity_name_1" length="32" not-null="true" />
+        </property>
+        <property name="severityName2" type="string">
+            <column name="severity_name_2" length="32" not-null="true" />
+        </property>
+        <property name="severityName3" type="string">
+            <column name="severity_name_3" length="32" not-null="true" />
+        </property>
+        <property name="severityName4" type="string">
+            <column name="severity_name_4" length="32" not-null="true" />
+        </property>
+        <property name="severityName5" type="string">
+            <column name="severity_name_5" length="32" not-null="true" />
+        </property>
+        <property name="okPeriod" type="int">
+            <column name="ok_period" not-null="true" />
+        </property>
+        <property name="blinkPeriod" type="int">
+            <column name="blink_period" not-null="true" />
+        </property>
+        <property name="problemUnackColor" type="string">
+            <column name="problem_unack_color" length="6" not-null="true" />
+        </property>
+        <property name="problemAckColor" type="string">
+            <column name="problem_ack_color" length="6" not-null="true" />
+        </property>
+        <property name="okUnackColor" type="string">
+            <column name="ok_unack_color" length="6" not-null="true" />
+        </property>
+        <property name="okAckColor" type="string">
+            <column name="ok_ack_color" length="6" not-null="true" />
+        </property>
+        <property name="problemUnackStyle" type="int">
+            <column name="problem_unack_style" not-null="true" />
+        </property>
+        <property name="problemAckStyle" type="int">
+            <column name="problem_ack_style" not-null="true" />
+        </property>
+        <property name="okUnackStyle" type="int">
+            <column name="ok_unack_style" not-null="true" />
+        </property>
+        <property name="okAckStyle" type="int">
+            <column name="ok_ack_style" not-null="true" />
+        </property>
+        <property name="snmptrapLogging" type="int">
+            <column name="snmptrap_logging" not-null="true" />
+        </property>
+        <property name="serverCheckInterval" type="int">
+            <column name="server_check_interval" not-null="true" />
+        </property>
+        <property name="hkEventsMode" type="int">
+            <column name="hk_events_mode" not-null="true" />
+        </property>
+        <property name="hkEventsTrigger" type="int">
+            <column name="hk_events_trigger" not-null="true" />
+        </property>
+        <property name="hkEventsInternal" type="int">
+            <column name="hk_events_internal" not-null="true" />
+        </property>
+        <property name="hkEventsDiscovery" type="int">
+            <column name="hk_events_discovery" not-null="true" />
+        </property>
+        <property name="hkEventsAutoreg" type="int">
+            <column name="hk_events_autoreg" not-null="true" />
+        </property>
+        <property name="hkServicesMode" type="int">
+            <column name="hk_services_mode" not-null="true" />
+        </property>
+        <property name="hkServices" type="int">
+            <column name="hk_services" not-null="true" />
+        </property>
+        <property name="hkAuditMode" type="int">
+            <column name="hk_audit_mode" not-null="true" />
+        </property>
+        <property name="hkAudit" type="int">
+            <column name="hk_audit" not-null="true" />
+        </property>
+        <property name="hkSessionsMode" type="int">
+            <column name="hk_sessions_mode" not-null="true" />
+        </property>
+        <property name="hkSessions" type="int">
+            <column name="hk_sessions" not-null="true" />
+        </property>
+        <property name="hkHistoryMode" type="int">
+            <column name="hk_history_mode" not-null="true" />
+        </property>
+        <property name="hkHistoryGlobal" type="int">
+            <column name="hk_history_global" not-null="true" />
+        </property>
+        <property name="hkHistory" type="int">
+            <column name="hk_history" not-null="true" />
+        </property>
+        <property name="hkTrendsMode" type="int">
+            <column name="hk_trends_mode" not-null="true" />
+        </property>
+        <property name="hkTrendsGlobal" type="int">
+            <column name="hk_trends_global" not-null="true" />
+        </property>
+        <property name="hkTrends" type="int">
+            <column name="hk_trends" not-null="true" />
+        </property>
+        <property name="defaultInventoryMode" type="int">
+            <column name="default_inventory_mode" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

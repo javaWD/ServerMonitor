@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Operations" table="operations" catalog="mydb">
+        <id name="operationid" type="long">
+            <column name="operationid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="actions" class="cn.com.esrichina.ServerMonitor.domain.Actions" fetch="select">
+            <column name="actionid" not-null="true" />
+        </many-to-one>
+        <property name="operationtype" type="int">
+            <column name="operationtype" not-null="true" />
+        </property>
+        <property name="escPeriod" type="int">
+            <column name="esc_period" not-null="true" />
+        </property>
+        <property name="escStepFrom" type="int">
+            <column name="esc_step_from" not-null="true" />
+        </property>
+        <property name="escStepTo" type="int">
+            <column name="esc_step_to" not-null="true" />
+        </property>
+        <property name="evaltype" type="int">
+            <column name="evaltype" not-null="true" />
+        </property>
+        <one-to-one name="opmessage" class="cn.com.esrichina.ServerMonitor.domain.Opmessage"></one-to-one>
+        <set name="opmessageGrps" table="opmessage_grp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="operationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.OpmessageGrp" />
+        </set>
+        <set name="opconditionses" table="opconditions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="operationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Opconditions" />
+        </set>
+        <set name="opcommandHsts" table="opcommand_hst" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="operationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.OpcommandHst" />
+        </set>
+        <set name="opcommandGrps" table="opcommand_grp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="operationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.OpcommandGrp" />
+        </set>
+        <set name="opmessageUsrs" table="opmessage_usr" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="operationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.OpmessageUsr" />
+        </set>
+        <set name="opgroups" table="opgroup" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="operationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Opgroup" />
+        </set>
+        <set name="optemplates" table="optemplate" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="operationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Optemplate" />
+        </set>
+        <one-to-one name="opcommand" class="cn.com.esrichina.ServerMonitor.domain.Opcommand"></one-to-one>
+        <one-to-one name="opinventory" class="cn.com.esrichina.ServerMonitor.domain.Opinventory"></one-to-one>
+    </class>
+</hibernate-mapping>

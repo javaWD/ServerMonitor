@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.InterfaceDiscovery" table="interface_discovery" catalog="mydb">
+        <id name="interfaceid" type="long">
+            <column name="interfaceid" />
+            <generator class="foreign">
+                <param name="property">interfaceByInterfaceid</param>
+            </generator>
+        </id>
+        <one-to-one name="interfaceByInterfaceid" class="cn.com.esrichina.ServerMonitor.domain.Interface" constrained="true"></one-to-one>
+        <many-to-one name="interfaceByParentInterfaceid" class="cn.com.esrichina.ServerMonitor.domain.Interface" fetch="select">
+            <column name="parent_interfaceid" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.AuditlogDetails" table="auditlog_details" catalog="mydb">
+        <id name="auditdetailid" type="long">
+            <column name="auditdetailid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="auditlog" class="cn.com.esrichina.ServerMonitor.domain.Auditlog" fetch="select">
+            <column name="auditid" not-null="true" />
+        </many-to-one>
+        <property name="tableName" type="string">
+            <column name="table_name" length="64" not-null="true" />
+        </property>
+        <property name="fieldName" type="string">
+            <column name="field_name" length="64" not-null="true" />
+        </property>
+        <property name="oldvalue" type="string">
+            <column name="oldvalue" length="65535" not-null="true" />
+        </property>
+        <property name="newvalue" type="string">
+            <column name="newvalue" length="65535" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

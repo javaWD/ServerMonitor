@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Hostmacro" table="hostmacro" catalog="mydb">
+        <id name="hostmacroid" type="long">
+            <column name="hostmacroid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hosts" class="cn.com.esrichina.ServerMonitor.domain.Hosts" fetch="select">
+            <column name="hostid" not-null="true" />
+        </many-to-one>
+        <property name="macro" type="string">
+            <column name="macro" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Services" table="services" catalog="mydb">
+        <id name="serviceid" type="long">
+            <column name="serviceid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="triggers" class="cn.com.esrichina.ServerMonitor.domain.Triggers" fetch="select">
+            <column name="triggerid" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="128" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="algorithm" type="int">
+            <column name="algorithm" not-null="true" />
+        </property>
+        <property name="showsla" type="int">
+            <column name="showsla" not-null="true" />
+        </property>
+        <property name="goodsla" type="double">
+            <column name="goodsla" precision="16" scale="4" not-null="true" />
+        </property>
+        <property name="sortorder" type="int">
+            <column name="sortorder" not-null="true" />
+        </property>
+        <set name="servicesLinksesForServicedownid" table="services_links" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="servicedownid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ServicesLinks" />
+        </set>
+        <set name="servicesLinksesForServiceupid" table="services_links" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serviceupid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ServicesLinks" />
+        </set>
+        <set name="serviceAlarmses" table="service_alarms" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serviceid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ServiceAlarms" />
+        </set>
+        <set name="servicesTimeses" table="services_times" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serviceid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ServicesTimes" />
+        </set>
+    </class>
+</hibernate-mapping>

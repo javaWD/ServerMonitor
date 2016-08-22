@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.SysmapsLinks" table="sysmaps_links" catalog="mydb">
+        <id name="linkid" type="long">
+            <column name="linkid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sysmapsElementsBySelementid2" class="cn.com.esrichina.ServerMonitor.domain.SysmapsElements" fetch="select">
+            <column name="selementid2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sysmaps" class="cn.com.esrichina.ServerMonitor.domain.Sysmaps" fetch="select">
+            <column name="sysmapid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sysmapsElementsBySelementid1" class="cn.com.esrichina.ServerMonitor.domain.SysmapsElements" fetch="select">
+            <column name="selementid1" not-null="true" />
+        </many-to-one>
+        <property name="drawtype" type="int">
+            <column name="drawtype" not-null="true" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" length="6" not-null="true" />
+        </property>
+        <property name="label" type="string">
+            <column name="label" length="2048" not-null="true" />
+        </property>
+        <set name="sysmapsLinkTriggerses" table="sysmaps_link_triggers" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="linkid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsLinkTriggers" />
+        </set>
+    </class>
+</hibernate-mapping>

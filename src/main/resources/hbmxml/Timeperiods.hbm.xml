@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Timeperiods" table="timeperiods" catalog="mydb">
+        <id name="timeperiodid" type="long">
+            <column name="timeperiodid" />
+            <generator class="assigned" />
+        </id>
+        <property name="timeperiodType" type="int">
+            <column name="timeperiod_type" not-null="true" />
+        </property>
+        <property name="every" type="int">
+            <column name="every" not-null="true" />
+        </property>
+        <property name="month" type="int">
+            <column name="month" not-null="true" />
+        </property>
+        <property name="dayofweek" type="int">
+            <column name="dayofweek" not-null="true" />
+        </property>
+        <property name="day" type="int">
+            <column name="day" not-null="true" />
+        </property>
+        <property name="startTime" type="int">
+            <column name="start_time" not-null="true" />
+        </property>
+        <property name="period" type="int">
+            <column name="period" not-null="true" />
+        </property>
+        <property name="startDate" type="int">
+            <column name="start_date" not-null="true" />
+        </property>
+        <set name="maintenancesWindowses" table="maintenances_windows" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="timeperiodid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.MaintenancesWindows" />
+        </set>
+    </class>
+</hibernate-mapping>

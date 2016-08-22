@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Dservices" table="dservices" catalog="mydb">
+        <id name="dserviceid" type="long">
+            <column name="dserviceid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="dchecks" class="cn.com.esrichina.ServerMonitor.domain.Dchecks" fetch="select">
+            <column name="dcheckid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dhosts" class="cn.com.esrichina.ServerMonitor.domain.Dhosts" fetch="select">
+            <column name="dhostid" not-null="true" />
+        </many-to-one>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="key" type="string">
+            <column name="key_" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" not-null="true" />
+        </property>
+        <property name="port" type="int">
+            <column name="port" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="lastup" type="int">
+            <column name="lastup" not-null="true" />
+        </property>
+        <property name="lastdown" type="int">
+            <column name="lastdown" not-null="true" />
+        </property>
+        <property name="ip" type="string">
+            <column name="ip" length="39" not-null="true" />
+        </property>
+        <property name="dns" type="string">
+            <column name="dns" length="64" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

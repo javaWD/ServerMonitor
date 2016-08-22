@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.ServicesTimes" table="services_times" catalog="mydb">
+        <id name="timeid" type="long">
+            <column name="timeid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="services" class="cn.com.esrichina.ServerMonitor.domain.Services" fetch="select">
+            <column name="serviceid" not-null="true" />
+        </many-to-one>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="tsFrom" type="int">
+            <column name="ts_from" not-null="true" />
+        </property>
+        <property name="tsTo" type="int">
+            <column name="ts_to" not-null="true" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.OpmessageGrp" table="opmessage_grp" catalog="mydb">
+        <id name="opmessageGrpid" type="long">
+            <column name="opmessage_grpid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="operations" class="cn.com.esrichina.ServerMonitor.domain.Operations" fetch="select">
+            <column name="operationid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usrgrp" class="cn.com.esrichina.ServerMonitor.domain.Usrgrp" fetch="select">
+            <column name="usrgrpid" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

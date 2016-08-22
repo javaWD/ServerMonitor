@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Opcommand" table="opcommand" catalog="mydb">
+        <id name="operationid" type="long">
+            <column name="operationid" />
+            <generator class="foreign">
+                <param name="property">operations</param>
+            </generator>
+        </id>
+        <many-to-one name="scripts" class="cn.com.esrichina.ServerMonitor.domain.Scripts" fetch="select">
+            <column name="scriptid" />
+        </many-to-one>
+        <one-to-one name="operations" class="cn.com.esrichina.ServerMonitor.domain.Operations" constrained="true"></one-to-one>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="executeOn" type="int">
+            <column name="execute_on" not-null="true" />
+        </property>
+        <property name="port" type="string">
+            <column name="port" length="64" not-null="true" />
+        </property>
+        <property name="authtype" type="int">
+            <column name="authtype" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="64" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="64" not-null="true" />
+        </property>
+        <property name="publickey" type="string">
+            <column name="publickey" length="64" not-null="true" />
+        </property>
+        <property name="privatekey" type="string">
+            <column name="privatekey" length="64" not-null="true" />
+        </property>
+        <property name="command" type="string">
+            <column name="command" length="65535" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

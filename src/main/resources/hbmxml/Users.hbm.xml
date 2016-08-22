@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Users" table="users" catalog="mydb">
+        <id name="userid" type="long">
+            <column name="userid" />
+            <generator class="assigned" />
+        </id>
+        <property name="alias" type="string">
+            <column name="alias" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="100" not-null="true" />
+        </property>
+        <property name="surname" type="string">
+            <column name="surname" length="100" not-null="true" />
+        </property>
+        <property name="passwd" type="string">
+            <column name="passwd" length="32" not-null="true" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" not-null="true" />
+        </property>
+        <property name="autologin" type="int">
+            <column name="autologin" not-null="true" />
+        </property>
+        <property name="autologout" type="int">
+            <column name="autologout" not-null="true" />
+        </property>
+        <property name="lang" type="string">
+            <column name="lang" length="5" not-null="true" />
+        </property>
+        <property name="refresh" type="int">
+            <column name="refresh" not-null="true" />
+        </property>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="theme" type="string">
+            <column name="theme" length="128" not-null="true" />
+        </property>
+        <property name="attemptFailed" type="int">
+            <column name="attempt_failed" not-null="true" />
+        </property>
+        <property name="attemptIp" type="string">
+            <column name="attempt_ip" length="39" not-null="true" />
+        </property>
+        <property name="attemptClock" type="int">
+            <column name="attempt_clock" not-null="true" />
+        </property>
+        <property name="rowsPerPage" type="int">
+            <column name="rows_per_page" not-null="true" />
+        </property>
+        <set name="profileses" table="profiles" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Profiles" />
+        </set>
+        <set name="slideshowses" table="slideshows" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Slideshows" />
+        </set>
+        <set name="medias" table="media" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Media" />
+        </set>
+        <set name="opmessageUsrs" table="opmessage_usr" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.OpmessageUsr" />
+        </set>
+        <set name="slideshowUsers" table="slideshow_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SlideshowUser" />
+        </set>
+        <set name="sysmapses" table="sysmaps" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Sysmaps" />
+        </set>
+        <set name="acknowledgeses" table="acknowledges" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Acknowledges" />
+        </set>
+        <set name="auditlogs" table="auditlog" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Auditlog" />
+        </set>
+        <set name="screenUsers" table="screen_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ScreenUser" />
+        </set>
+        <set name="alertses" table="alerts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Alerts" />
+        </set>
+        <set name="sessionses" table="sessions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Sessions" />
+        </set>
+        <set name="usersGroupses" table="users_groups" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.UsersGroups" />
+        </set>
+        <set name="screenses" table="screens" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Screens" />
+        </set>
+        <set name="sysmapUsers" table="sysmap_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="userid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapUser" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.GraphTheme" table="graph_theme" catalog="mydb">
+        <id name="graphthemeid" type="long">
+            <column name="graphthemeid" />
+            <generator class="assigned" />
+        </id>
+        <property name="theme" type="string">
+            <column name="theme" length="64" not-null="true" unique="true" />
+        </property>
+        <property name="backgroundcolor" type="string">
+            <column name="backgroundcolor" length="6" not-null="true" />
+        </property>
+        <property name="graphcolor" type="string">
+            <column name="graphcolor" length="6" not-null="true" />
+        </property>
+        <property name="gridcolor" type="string">
+            <column name="gridcolor" length="6" not-null="true" />
+        </property>
+        <property name="maingridcolor" type="string">
+            <column name="maingridcolor" length="6" not-null="true" />
+        </property>
+        <property name="gridbordercolor" type="string">
+            <column name="gridbordercolor" length="6" not-null="true" />
+        </property>
+        <property name="textcolor" type="string">
+            <column name="textcolor" length="6" not-null="true" />
+        </property>
+        <property name="highlightcolor" type="string">
+            <column name="highlightcolor" length="6" not-null="true" />
+        </property>
+        <property name="leftpercentilecolor" type="string">
+            <column name="leftpercentilecolor" length="6" not-null="true" />
+        </property>
+        <property name="rightpercentilecolor" type="string">
+            <column name="rightpercentilecolor" length="6" not-null="true" />
+        </property>
+        <property name="nonworktimecolor" type="string">
+            <column name="nonworktimecolor" length="6" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

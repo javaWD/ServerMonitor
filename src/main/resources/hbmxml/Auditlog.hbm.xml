@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Auditlog" table="auditlog" catalog="mydb">
+        <id name="auditid" type="long">
+            <column name="auditid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="users" class="cn.com.esrichina.ServerMonitor.domain.Users" fetch="select">
+            <column name="userid" not-null="true" />
+        </many-to-one>
+        <property name="clock" type="int">
+            <column name="clock" not-null="true" />
+        </property>
+        <property name="action" type="int">
+            <column name="action" not-null="true" />
+        </property>
+        <property name="resourcetype" type="int">
+            <column name="resourcetype" not-null="true" />
+        </property>
+        <property name="details" type="string">
+            <column name="details" length="128" not-null="true" />
+        </property>
+        <property name="ip" type="string">
+            <column name="ip" length="39" not-null="true" />
+        </property>
+        <property name="resourceid" type="long">
+            <column name="resourceid" not-null="true" />
+        </property>
+        <property name="resourcename" type="string">
+            <column name="resourcename" not-null="true" />
+        </property>
+        <set name="auditlogDetailses" table="auditlog_details" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="auditid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.AuditlogDetails" />
+        </set>
+    </class>
+</hibernate-mapping>

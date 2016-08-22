@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.TriggerDepends" table="trigger_depends" catalog="mydb">
+        <id name="triggerdepid" type="long">
+            <column name="triggerdepid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="triggersByTriggeridDown" class="cn.com.esrichina.ServerMonitor.domain.Triggers" fetch="select">
+            <column name="triggerid_down" not-null="true" />
+        </many-to-one>
+        <many-to-one name="triggersByTriggeridUp" class="cn.com.esrichina.ServerMonitor.domain.Triggers" fetch="select">
+            <column name="triggerid_up" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

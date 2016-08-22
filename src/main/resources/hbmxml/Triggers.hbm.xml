@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Triggers" table="triggers" catalog="mydb">
+        <id name="triggerid" type="long">
+            <column name="triggerid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="triggers" class="cn.com.esrichina.ServerMonitor.domain.Triggers" fetch="select">
+            <column name="templateid" />
+        </many-to-one>
+        <property name="expression" type="string">
+            <column name="expression" length="2048" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="value" type="int">
+            <column name="value" not-null="true" />
+        </property>
+        <property name="priority" type="int">
+            <column name="priority" not-null="true" />
+        </property>
+        <property name="lastchange" type="int">
+            <column name="lastchange" not-null="true" />
+        </property>
+        <property name="comments" type="string">
+            <column name="comments" length="65535" not-null="true" />
+        </property>
+        <property name="error" type="string">
+            <column name="error" length="128" not-null="true" />
+        </property>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="state" type="int">
+            <column name="state" not-null="true" />
+        </property>
+        <property name="flags" type="int">
+            <column name="flags" not-null="true" />
+        </property>
+        <set name="triggerDependsesForTriggeridUp" table="trigger_depends" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="triggerid_up" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.TriggerDepends" />
+        </set>
+        <set name="functionses" table="functions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="triggerid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Functions" />
+        </set>
+        <set name="triggerDependsesForTriggeridDown" table="trigger_depends" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="triggerid_down" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.TriggerDepends" />
+        </set>
+        <set name="sysmapsLinkTriggerses" table="sysmaps_link_triggers" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="triggerid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsLinkTriggers" />
+        </set>
+        <set name="triggerDiscoveriesForParentTriggerid" table="trigger_discovery" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="parent_triggerid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.TriggerDiscovery" />
+        </set>
+        <one-to-one name="triggerDiscoveryByTriggerid" class="cn.com.esrichina.ServerMonitor.domain.TriggerDiscovery"></one-to-one>
+        <set name="triggerses" table="triggers" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="templateid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Triggers" />
+        </set>
+        <set name="serviceses" table="services" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="triggerid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Services" />
+        </set>
+    </class>
+</hibernate-mapping>

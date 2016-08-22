@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Housekeeper" table="housekeeper" catalog="mydb">
+        <id name="housekeeperid" type="long">
+            <column name="housekeeperid" />
+            <generator class="assigned" />
+        </id>
+        <property name="tablename" type="string">
+            <column name="tablename" length="64" not-null="true" />
+        </property>
+        <property name="field" type="string">
+            <column name="field" length="64" not-null="true" />
+        </property>
+        <property name="value" type="long">
+            <column name="value" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

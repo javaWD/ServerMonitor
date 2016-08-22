@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.HostDiscovery" table="host_discovery" catalog="mydb">
+        <id name="hostid" type="long">
+            <column name="hostid" />
+            <generator class="foreign">
+                <param name="property">hostsByHostid</param>
+            </generator>
+        </id>
+        <one-to-one name="hostsByHostid" class="cn.com.esrichina.ServerMonitor.domain.Hosts" constrained="true"></one-to-one>
+        <many-to-one name="hostsByParentHostid" class="cn.com.esrichina.ServerMonitor.domain.Hosts" fetch="select">
+            <column name="parent_hostid" />
+        </many-to-one>
+        <many-to-one name="items" class="cn.com.esrichina.ServerMonitor.domain.Items" fetch="select">
+            <column name="parent_itemid" />
+        </many-to-one>
+        <property name="host" type="string">
+            <column name="host" length="64" not-null="true" />
+        </property>
+        <property name="lastcheck" type="int">
+            <column name="lastcheck" not-null="true" />
+        </property>
+        <property name="tsDelete" type="int">
+            <column name="ts_delete" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

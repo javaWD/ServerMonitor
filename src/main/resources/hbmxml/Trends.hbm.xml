@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Trends" table="trends" catalog="mydb">
+        <composite-id name="id" class="cn.com.esrichina.ServerMonitor.domain.TrendsId">
+            <key-property name="itemid" type="long">
+                <column name="itemid" />
+            </key-property>
+            <key-property name="clock" type="int">
+                <column name="clock" />
+            </key-property>
+        </composite-id>
+        <property name="num" type="int">
+            <column name="num" not-null="true" />
+        </property>
+        <property name="valueMin" type="double">
+            <column name="value_min" precision="16" scale="4" not-null="true" />
+        </property>
+        <property name="valueAvg" type="double">
+            <column name="value_avg" precision="16" scale="4" not-null="true" />
+        </property>
+        <property name="valueMax" type="double">
+            <column name="value_max" precision="16" scale="4" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

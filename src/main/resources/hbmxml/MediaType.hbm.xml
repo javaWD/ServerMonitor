@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.MediaType" table="media_type" catalog="mydb">
+        <id name="mediatypeid" type="long">
+            <column name="mediatypeid" />
+            <generator class="assigned" />
+        </id>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="smtpServer" type="string">
+            <column name="smtp_server" not-null="true" />
+        </property>
+        <property name="smtpHelo" type="string">
+            <column name="smtp_helo" not-null="true" />
+        </property>
+        <property name="smtpEmail" type="string">
+            <column name="smtp_email" not-null="true" />
+        </property>
+        <property name="execPath" type="string">
+            <column name="exec_path" not-null="true" />
+        </property>
+        <property name="gsmModem" type="string">
+            <column name="gsm_modem" not-null="true" />
+        </property>
+        <property name="username" type="string">
+            <column name="username" not-null="true" />
+        </property>
+        <property name="passwd" type="string">
+            <column name="passwd" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="smtpPort" type="int">
+            <column name="smtp_port" not-null="true" />
+        </property>
+        <property name="smtpSecurity" type="int">
+            <column name="smtp_security" not-null="true" />
+        </property>
+        <property name="smtpVerifyPeer" type="int">
+            <column name="smtp_verify_peer" not-null="true" />
+        </property>
+        <property name="smtpVerifyHost" type="int">
+            <column name="smtp_verify_host" not-null="true" />
+        </property>
+        <property name="smtpAuthentication" type="int">
+            <column name="smtp_authentication" not-null="true" />
+        </property>
+        <property name="execParams" type="string">
+            <column name="exec_params" not-null="true" />
+        </property>
+        <set name="medias" table="media" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mediatypeid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Media" />
+        </set>
+        <set name="opmessages" table="opmessage" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mediatypeid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Opmessage" />
+        </set>
+        <set name="alertses" table="alerts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="mediatypeid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Alerts" />
+        </set>
+    </class>
+</hibernate-mapping>

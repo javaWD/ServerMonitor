@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Hosts" table="hosts" catalog="mydb">
+        <id name="hostid" type="long">
+            <column name="hostid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hostsByTemplateid" class="cn.com.esrichina.ServerMonitor.domain.Hosts" fetch="select">
+            <column name="templateid" />
+        </many-to-one>
+        <many-to-one name="maintenances" class="cn.com.esrichina.ServerMonitor.domain.Maintenances" fetch="select">
+            <column name="maintenanceid" />
+        </many-to-one>
+        <many-to-one name="hostsByProxyHostid" class="cn.com.esrichina.ServerMonitor.domain.Hosts" fetch="select">
+            <column name="proxy_hostid" />
+        </many-to-one>
+        <property name="host" type="string">
+            <column name="host" length="128" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="disableUntil" type="int">
+            <column name="disable_until" not-null="true" />
+        </property>
+        <property name="error" type="string">
+            <column name="error" length="2048" not-null="true" />
+        </property>
+        <property name="available" type="int">
+            <column name="available" not-null="true" />
+        </property>
+        <property name="errorsFrom" type="int">
+            <column name="errors_from" not-null="true" />
+        </property>
+        <property name="lastaccess" type="int">
+            <column name="lastaccess" not-null="true" />
+        </property>
+        <property name="ipmiAuthtype" type="int">
+            <column name="ipmi_authtype" not-null="true" />
+        </property>
+        <property name="ipmiPrivilege" type="int">
+            <column name="ipmi_privilege" not-null="true" />
+        </property>
+        <property name="ipmiUsername" type="string">
+            <column name="ipmi_username" length="16" not-null="true" />
+        </property>
+        <property name="ipmiPassword" type="string">
+            <column name="ipmi_password" length="20" not-null="true" />
+        </property>
+        <property name="ipmiDisableUntil" type="int">
+            <column name="ipmi_disable_until" not-null="true" />
+        </property>
+        <property name="ipmiAvailable" type="int">
+            <column name="ipmi_available" not-null="true" />
+        </property>
+        <property name="snmpDisableUntil" type="int">
+            <column name="snmp_disable_until" not-null="true" />
+        </property>
+        <property name="snmpAvailable" type="int">
+            <column name="snmp_available" not-null="true" />
+        </property>
+        <property name="maintenanceStatus" type="int">
+            <column name="maintenance_status" not-null="true" />
+        </property>
+        <property name="maintenanceType" type="int">
+            <column name="maintenance_type" not-null="true" />
+        </property>
+        <property name="maintenanceFrom" type="int">
+            <column name="maintenance_from" not-null="true" />
+        </property>
+        <property name="ipmiErrorsFrom" type="int">
+            <column name="ipmi_errors_from" not-null="true" />
+        </property>
+        <property name="snmpErrorsFrom" type="int">
+            <column name="snmp_errors_from" not-null="true" />
+        </property>
+        <property name="ipmiError" type="string">
+            <column name="ipmi_error" length="2048" not-null="true" />
+        </property>
+        <property name="snmpError" type="string">
+            <column name="snmp_error" length="2048" not-null="true" />
+        </property>
+        <property name="jmxDisableUntil" type="int">
+            <column name="jmx_disable_until" not-null="true" />
+        </property>
+        <property name="jmxAvailable" type="int">
+            <column name="jmx_available" not-null="true" />
+        </property>
+        <property name="jmxErrorsFrom" type="int">
+            <column name="jmx_errors_from" not-null="true" />
+        </property>
+        <property name="jmxError" type="string">
+            <column name="jmx_error" length="2048" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="128" not-null="true" />
+        </property>
+        <property name="flags" type="int">
+            <column name="flags" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="tlsConnect" type="int">
+            <column name="tls_connect" not-null="true" />
+        </property>
+        <property name="tlsAccept" type="int">
+            <column name="tls_accept" not-null="true" />
+        </property>
+        <property name="tlsIssuer" type="string">
+            <column name="tls_issuer" length="1024" not-null="true" />
+        </property>
+        <property name="tlsSubject" type="string">
+            <column name="tls_subject" length="1024" not-null="true" />
+        </property>
+        <property name="tlsPskIdentity" type="string">
+            <column name="tls_psk_identity" length="128" not-null="true" />
+        </property>
+        <property name="tlsPsk" type="string">
+            <column name="tls_psk" length="512" not-null="true" />
+        </property>
+        <set name="autoregHosts" table="autoreg_host" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="proxy_hostid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.AutoregHost" />
+        </set>
+        <set name="hostsesForTemplateid" table="hosts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="templateid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Hosts" />
+        </set>
+        <set name="hostsTemplatesesForHostid" table="hosts_templates" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.HostsTemplates" />
+        </set>
+        <set name="hostsesForProxyHostid" table="hosts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="proxy_hostid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Hosts" />
+        </set>
+        <one-to-one name="hostDiscoveryByHostid" class="cn.com.esrichina.ServerMonitor.domain.HostDiscovery"></one-to-one>
+        <one-to-one name="hostInventory" class="cn.com.esrichina.ServerMonitor.domain.HostInventory"></one-to-one>
+        <set name="hostsTemplatesesForTemplateid" table="hosts_templates" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="templateid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.HostsTemplates" />
+        </set>
+        <set name="hostDiscoveriesForParentHostid" table="host_discovery" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="parent_hostid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.HostDiscovery" />
+        </set>
+        <set name="hostsGroupses" table="hosts_groups" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.HostsGroups" />
+        </set>
+        <set name="interfaces" table="interface" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Interface" />
+        </set>
+        <set name="httptests" table="httptest" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Httptest" />
+        </set>
+        <set name="applicationses" table="applications" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Applications" />
+        </set>
+        <set name="hostmacros" table="hostmacro" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Hostmacro" />
+        </set>
+        <set name="druleses" table="drules" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="proxy_hostid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Drules" />
+        </set>
+        <set name="maintenancesHostses" table="maintenances_hosts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.MaintenancesHosts" />
+        </set>
+        <set name="opcommandHsts" table="opcommand_hst" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.OpcommandHst" />
+        </set>
+        <set name="groupPrototypes" table="group_prototype" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.GroupPrototype" />
+        </set>
+        <set name="optemplates" table="optemplate" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="templateid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Optemplate" />
+        </set>
+        <set name="screenses" table="screens" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="templateid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Screens" />
+        </set>
+        <set name="itemses" table="items" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="hostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Items" />
+        </set>
+    </class>
+</hibernate-mapping>

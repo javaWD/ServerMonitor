@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Ids" table="ids" catalog="mydb">
+        <composite-id name="id" class="cn.com.esrichina.ServerMonitor.domain.IdsId">
+            <key-property name="tableName" type="string">
+                <column name="table_name" length="64" />
+            </key-property>
+            <key-property name="fieldName" type="string">
+                <column name="field_name" length="64" />
+            </key-property>
+        </composite-id>
+        <property name="nextid" type="long">
+            <column name="nextid" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

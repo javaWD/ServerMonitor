@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.HistoryLog" table="history_log" catalog="mydb">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <version name="timestamp" type="int">
+            <column name="timestamp" not-null="true" />
+        </version>
+        <property name="itemid" type="long">
+            <column name="itemid" not-null="true" />
+        </property>
+        <property name="clock" type="int">
+            <column name="clock" not-null="true" />
+        </property>
+        <property name="source" type="string">
+            <column name="source" length="64" not-null="true" />
+        </property>
+        <property name="severity" type="int">
+            <column name="severity" not-null="true" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" length="65535" not-null="true" />
+        </property>
+        <property name="logeventid" type="int">
+            <column name="logeventid" not-null="true" />
+        </property>
+        <property name="ns" type="int">
+            <column name="ns" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

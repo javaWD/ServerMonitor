@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Slides" table="slides" catalog="mydb">
+        <id name="slideid" type="long">
+            <column name="slideid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="screens" class="cn.com.esrichina.ServerMonitor.domain.Screens" fetch="select">
+            <column name="screenid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="slideshows" class="cn.com.esrichina.ServerMonitor.domain.Slideshows" fetch="select">
+            <column name="slideshowid" not-null="true" />
+        </many-to-one>
+        <property name="step" type="int">
+            <column name="step" not-null="true" />
+        </property>
+        <property name="delay" type="int">
+            <column name="delay" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

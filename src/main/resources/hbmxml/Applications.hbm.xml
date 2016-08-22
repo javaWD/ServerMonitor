@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Applications" table="applications" catalog="mydb">
+        <id name="applicationid" type="long">
+            <column name="applicationid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hosts" class="cn.com.esrichina.ServerMonitor.domain.Hosts" fetch="select">
+            <column name="hostid" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="flags" type="int">
+            <column name="flags" not-null="true" />
+        </property>
+        <set name="applicationTemplatesForApplicationid" table="application_template" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="applicationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ApplicationTemplate" />
+        </set>
+        <set name="applicationDiscoveries" table="application_discovery" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="applicationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ApplicationDiscovery" />
+        </set>
+        <set name="httptests" table="httptest" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="applicationid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Httptest" />
+        </set>
+        <set name="applicationTemplatesForTemplateid" table="application_template" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="templateid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ApplicationTemplate" />
+        </set>
+        <set name="itemsApplicationses" table="items_applications" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="applicationid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ItemsApplications" />
+        </set>
+    </class>
+</hibernate-mapping>

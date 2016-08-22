@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.HostInventory" table="host_inventory" catalog="mydb">
+        <id name="hostid" type="long">
+            <column name="hostid" />
+            <generator class="foreign">
+                <param name="property">hosts</param>
+            </generator>
+        </id>
+        <one-to-one name="hosts" class="cn.com.esrichina.ServerMonitor.domain.Hosts" constrained="true"></one-to-one>
+        <property name="inventoryMode" type="int">
+            <column name="inventory_mode" not-null="true" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="64" not-null="true" />
+        </property>
+        <property name="typeFull" type="string">
+            <column name="type_full" length="64" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="64" not-null="true" />
+        </property>
+        <property name="alias" type="string">
+            <column name="alias" length="64" not-null="true" />
+        </property>
+        <property name="os" type="string">
+            <column name="os" length="64" not-null="true" />
+        </property>
+        <property name="osFull" type="string">
+            <column name="os_full" not-null="true" />
+        </property>
+        <property name="osShort" type="string">
+            <column name="os_short" length="64" not-null="true" />
+        </property>
+        <property name="serialnoA" type="string">
+            <column name="serialno_a" length="64" not-null="true" />
+        </property>
+        <property name="serialnoB" type="string">
+            <column name="serialno_b" length="64" not-null="true" />
+        </property>
+        <property name="tag" type="string">
+            <column name="tag" length="64" not-null="true" />
+        </property>
+        <property name="assetTag" type="string">
+            <column name="asset_tag" length="64" not-null="true" />
+        </property>
+        <property name="macaddressA" type="string">
+            <column name="macaddress_a" length="64" not-null="true" />
+        </property>
+        <property name="macaddressB" type="string">
+            <column name="macaddress_b" length="64" not-null="true" />
+        </property>
+        <property name="hardware" type="string">
+            <column name="hardware" not-null="true" />
+        </property>
+        <property name="hardwareFull" type="string">
+            <column name="hardware_full" length="65535" not-null="true" />
+        </property>
+        <property name="software" type="string">
+            <column name="software" not-null="true" />
+        </property>
+        <property name="softwareFull" type="string">
+            <column name="software_full" length="65535" not-null="true" />
+        </property>
+        <property name="softwareAppA" type="string">
+            <column name="software_app_a" length="64" not-null="true" />
+        </property>
+        <property name="softwareAppB" type="string">
+            <column name="software_app_b" length="64" not-null="true" />
+        </property>
+        <property name="softwareAppC" type="string">
+            <column name="software_app_c" length="64" not-null="true" />
+        </property>
+        <property name="softwareAppD" type="string">
+            <column name="software_app_d" length="64" not-null="true" />
+        </property>
+        <property name="softwareAppE" type="string">
+            <column name="software_app_e" length="64" not-null="true" />
+        </property>
+        <property name="contact" type="string">
+            <column name="contact" length="65535" not-null="true" />
+        </property>
+        <property name="location" type="string">
+            <column name="location" length="65535" not-null="true" />
+        </property>
+        <property name="locationLat" type="string">
+            <column name="location_lat" length="16" not-null="true" />
+        </property>
+        <property name="locationLon" type="string">
+            <column name="location_lon" length="16" not-null="true" />
+        </property>
+        <property name="notes" type="string">
+            <column name="notes" length="65535" not-null="true" />
+        </property>
+        <property name="chassis" type="string">
+            <column name="chassis" length="64" not-null="true" />
+        </property>
+        <property name="model" type="string">
+            <column name="model" length="64" not-null="true" />
+        </property>
+        <property name="hwArch" type="string">
+            <column name="hw_arch" length="32" not-null="true" />
+        </property>
+        <property name="vendor" type="string">
+            <column name="vendor" length="64" not-null="true" />
+        </property>
+        <property name="contractNumber" type="string">
+            <column name="contract_number" length="64" not-null="true" />
+        </property>
+        <property name="installerName" type="string">
+            <column name="installer_name" length="64" not-null="true" />
+        </property>
+        <property name="deploymentStatus" type="string">
+            <column name="deployment_status" length="64" not-null="true" />
+        </property>
+        <property name="urlA" type="string">
+            <column name="url_a" not-null="true" />
+        </property>
+        <property name="urlB" type="string">
+            <column name="url_b" not-null="true" />
+        </property>
+        <property name="urlC" type="string">
+            <column name="url_c" not-null="true" />
+        </property>
+        <property name="hostNetworks" type="string">
+            <column name="host_networks" length="65535" not-null="true" />
+        </property>
+        <property name="hostNetmask" type="string">
+            <column name="host_netmask" length="39" not-null="true" />
+        </property>
+        <property name="hostRouter" type="string">
+            <column name="host_router" length="39" not-null="true" />
+        </property>
+        <property name="oobIp" type="string">
+            <column name="oob_ip" length="39" not-null="true" />
+        </property>
+        <property name="oobNetmask" type="string">
+            <column name="oob_netmask" length="39" not-null="true" />
+        </property>
+        <property name="oobRouter" type="string">
+            <column name="oob_router" length="39" not-null="true" />
+        </property>
+        <property name="dateHwPurchase" type="string">
+            <column name="date_hw_purchase" length="64" not-null="true" />
+        </property>
+        <property name="dateHwInstall" type="string">
+            <column name="date_hw_install" length="64" not-null="true" />
+        </property>
+        <property name="dateHwExpiry" type="string">
+            <column name="date_hw_expiry" length="64" not-null="true" />
+        </property>
+        <property name="dateHwDecomm" type="string">
+            <column name="date_hw_decomm" length="64" not-null="true" />
+        </property>
+        <property name="siteAddressA" type="string">
+            <column name="site_address_a" length="128" not-null="true" />
+        </property>
+        <property name="siteAddressB" type="string">
+            <column name="site_address_b" length="128" not-null="true" />
+        </property>
+        <property name="siteAddressC" type="string">
+            <column name="site_address_c" length="128" not-null="true" />
+        </property>
+        <property name="siteCity" type="string">
+            <column name="site_city" length="128" not-null="true" />
+        </property>
+        <property name="siteState" type="string">
+            <column name="site_state" length="64" not-null="true" />
+        </property>
+        <property name="siteCountry" type="string">
+            <column name="site_country" length="64" not-null="true" />
+        </property>
+        <property name="siteZip" type="string">
+            <column name="site_zip" length="64" not-null="true" />
+        </property>
+        <property name="siteRack" type="string">
+            <column name="site_rack" length="128" not-null="true" />
+        </property>
+        <property name="siteNotes" type="string">
+            <column name="site_notes" length="65535" not-null="true" />
+        </property>
+        <property name="poc1Name" type="string">
+            <column name="poc_1_name" length="128" not-null="true" />
+        </property>
+        <property name="poc1Email" type="string">
+            <column name="poc_1_email" length="128" not-null="true" />
+        </property>
+        <property name="poc1PhoneA" type="string">
+            <column name="poc_1_phone_a" length="64" not-null="true" />
+        </property>
+        <property name="poc1PhoneB" type="string">
+            <column name="poc_1_phone_b" length="64" not-null="true" />
+        </property>
+        <property name="poc1Cell" type="string">
+            <column name="poc_1_cell" length="64" not-null="true" />
+        </property>
+        <property name="poc1Screen" type="string">
+            <column name="poc_1_screen" length="64" not-null="true" />
+        </property>
+        <property name="poc1Notes" type="string">
+            <column name="poc_1_notes" length="65535" not-null="true" />
+        </property>
+        <property name="poc2Name" type="string">
+            <column name="poc_2_name" length="128" not-null="true" />
+        </property>
+        <property name="poc2Email" type="string">
+            <column name="poc_2_email" length="128" not-null="true" />
+        </property>
+        <property name="poc2PhoneA" type="string">
+            <column name="poc_2_phone_a" length="64" not-null="true" />
+        </property>
+        <property name="poc2PhoneB" type="string">
+            <column name="poc_2_phone_b" length="64" not-null="true" />
+        </property>
+        <property name="poc2Cell" type="string">
+            <column name="poc_2_cell" length="64" not-null="true" />
+        </property>
+        <property name="poc2Screen" type="string">
+            <column name="poc_2_screen" length="64" not-null="true" />
+        </property>
+        <property name="poc2Notes" type="string">
+            <column name="poc_2_notes" length="65535" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

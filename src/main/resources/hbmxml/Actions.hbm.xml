@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Actions" table="actions" catalog="mydb">
+        <id name="actionid" type="long">
+            <column name="actionid" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" not-null="true" unique="true" />
+        </property>
+        <property name="eventsource" type="int">
+            <column name="eventsource" not-null="true" />
+        </property>
+        <property name="evaltype" type="int">
+            <column name="evaltype" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="escPeriod" type="int">
+            <column name="esc_period" not-null="true" />
+        </property>
+        <property name="defShortdata" type="string">
+            <column name="def_shortdata" not-null="true" />
+        </property>
+        <property name="defLongdata" type="string">
+            <column name="def_longdata" length="65535" not-null="true" />
+        </property>
+        <property name="recoveryMsg" type="int">
+            <column name="recovery_msg" not-null="true" />
+        </property>
+        <property name="RShortdata" type="string">
+            <column name="r_shortdata" not-null="true" />
+        </property>
+        <property name="RLongdata" type="string">
+            <column name="r_longdata" length="65535" not-null="true" />
+        </property>
+        <property name="formula" type="string">
+            <column name="formula" not-null="true" />
+        </property>
+        <set name="alertses" table="alerts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="actionid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Alerts" />
+        </set>
+        <set name="conditionses" table="conditions" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="actionid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Conditions" />
+        </set>
+        <set name="operationses" table="operations" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="actionid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Operations" />
+        </set>
+    </class>
+</hibernate-mapping>

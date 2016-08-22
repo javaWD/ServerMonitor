@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.ScreensItems" table="screens_items" catalog="mydb">
+        <id name="screenitemid" type="long">
+            <column name="screenitemid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="screens" class="cn.com.esrichina.ServerMonitor.domain.Screens" fetch="select">
+            <column name="screenid" not-null="true" />
+        </many-to-one>
+        <property name="resourcetype" type="int">
+            <column name="resourcetype" not-null="true" />
+        </property>
+        <property name="resourceid" type="long">
+            <column name="resourceid" not-null="true" />
+        </property>
+        <property name="width" type="int">
+            <column name="width" not-null="true" />
+        </property>
+        <property name="height" type="int">
+            <column name="height" not-null="true" />
+        </property>
+        <property name="x" type="int">
+            <column name="x" not-null="true" />
+        </property>
+        <property name="y" type="int">
+            <column name="y" not-null="true" />
+        </property>
+        <property name="colspan" type="int">
+            <column name="colspan" not-null="true" />
+        </property>
+        <property name="rowspan" type="int">
+            <column name="rowspan" not-null="true" />
+        </property>
+        <property name="elements" type="int">
+            <column name="elements" not-null="true" />
+        </property>
+        <property name="valign" type="int">
+            <column name="valign" not-null="true" />
+        </property>
+        <property name="halign" type="int">
+            <column name="halign" not-null="true" />
+        </property>
+        <property name="style" type="int">
+            <column name="style" not-null="true" />
+        </property>
+        <property name="url" type="string">
+            <column name="url" not-null="true" />
+        </property>
+        <property name="dynamic" type="int">
+            <column name="dynamic" not-null="true" />
+        </property>
+        <property name="sortTriggers" type="int">
+            <column name="sort_triggers" not-null="true" />
+        </property>
+        <property name="application" type="string">
+            <column name="application" not-null="true" />
+        </property>
+        <property name="maxColumns" type="int">
+            <column name="max_columns" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Maintenances" table="maintenances" catalog="mydb">
+        <id name="maintenanceid" type="long">
+            <column name="maintenanceid" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="128" not-null="true" unique="true" />
+        </property>
+        <property name="maintenanceType" type="int">
+            <column name="maintenance_type" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="activeSince" type="int">
+            <column name="active_since" not-null="true" />
+        </property>
+        <property name="activeTill" type="int">
+            <column name="active_till" not-null="true" />
+        </property>
+        <set name="maintenancesHostses" table="maintenances_hosts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="maintenanceid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.MaintenancesHosts" />
+        </set>
+        <set name="hostses" table="hosts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="maintenanceid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Hosts" />
+        </set>
+        <set name="maintenancesWindowses" table="maintenances_windows" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="maintenanceid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.MaintenancesWindows" />
+        </set>
+        <set name="maintenancesGroupses" table="maintenances_groups" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="maintenanceid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.MaintenancesGroups" />
+        </set>
+    </class>
+</hibernate-mapping>

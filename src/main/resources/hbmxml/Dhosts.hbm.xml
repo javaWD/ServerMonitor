@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Dhosts" table="dhosts" catalog="mydb">
+        <id name="dhostid" type="long">
+            <column name="dhostid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="drules" class="cn.com.esrichina.ServerMonitor.domain.Drules" fetch="select">
+            <column name="druleid" not-null="true" />
+        </many-to-one>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="lastup" type="int">
+            <column name="lastup" not-null="true" />
+        </property>
+        <property name="lastdown" type="int">
+            <column name="lastdown" not-null="true" />
+        </property>
+        <set name="dserviceses" table="dservices" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dhostid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Dservices" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Opinventory" table="opinventory" catalog="mydb">
+        <id name="operationid" type="long">
+            <column name="operationid" />
+            <generator class="foreign">
+                <param name="property">operations</param>
+            </generator>
+        </id>
+        <one-to-one name="operations" class="cn.com.esrichina.ServerMonitor.domain.Operations" constrained="true"></one-to-one>
+        <property name="inventoryMode" type="int">
+            <column name="inventory_mode" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

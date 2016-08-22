@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Images" table="images" catalog="mydb">
+        <id name="imageid" type="long">
+            <column name="imageid" />
+            <generator class="assigned" />
+        </id>
+        <property name="imagetype" type="int">
+            <column name="imagetype" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="64" not-null="true" unique="true" />
+        </property>
+        <property name="image" type="binary">
+            <column name="image" not-null="true" />
+        </property>
+        <set name="sysmapsElementsesForIconidOff" table="sysmaps_elements" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iconid_off" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsElements" />
+        </set>
+        <set name="sysmapsElementsesForIconidDisabled" table="sysmaps_elements" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iconid_disabled" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsElements" />
+        </set>
+        <set name="sysmapsElementsesForIconidOn" table="sysmaps_elements" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iconid_on" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsElements" />
+        </set>
+        <set name="iconMaps" table="icon_map" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="default_iconid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.IconMap" />
+        </set>
+        <set name="sysmapsElementsesForIconidMaintenance" table="sysmaps_elements" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iconid_maintenance" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsElements" />
+        </set>
+        <set name="iconMappings" table="icon_mapping" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iconid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.IconMapping" />
+        </set>
+        <set name="sysmapses" table="sysmaps" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="backgroundid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Sysmaps" />
+        </set>
+    </class>
+</hibernate-mapping>

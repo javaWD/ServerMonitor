@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Media" table="media" catalog="mydb">
+        <id name="mediaid" type="long">
+            <column name="mediaid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="mediaType" class="cn.com.esrichina.ServerMonitor.domain.MediaType" fetch="select">
+            <column name="mediatypeid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="users" class="cn.com.esrichina.ServerMonitor.domain.Users" fetch="select">
+            <column name="userid" not-null="true" />
+        </many-to-one>
+        <property name="sendto" type="string">
+            <column name="sendto" length="100" not-null="true" />
+        </property>
+        <property name="active" type="int">
+            <column name="active" not-null="true" />
+        </property>
+        <property name="severity" type="int">
+            <column name="severity" not-null="true" />
+        </property>
+        <property name="period" type="string">
+            <column name="period" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

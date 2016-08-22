@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.SysmapsElements" table="sysmaps_elements" catalog="mydb">
+        <id name="selementid" type="long">
+            <column name="selementid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="imagesByIconidOn" class="cn.com.esrichina.ServerMonitor.domain.Images" fetch="select">
+            <column name="iconid_on" />
+        </many-to-one>
+        <many-to-one name="imagesByIconidMaintenance" class="cn.com.esrichina.ServerMonitor.domain.Images" fetch="select">
+            <column name="iconid_maintenance" />
+        </many-to-one>
+        <many-to-one name="sysmaps" class="cn.com.esrichina.ServerMonitor.domain.Sysmaps" fetch="select">
+            <column name="sysmapid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="imagesByIconidDisabled" class="cn.com.esrichina.ServerMonitor.domain.Images" fetch="select">
+            <column name="iconid_disabled" />
+        </many-to-one>
+        <many-to-one name="imagesByIconidOff" class="cn.com.esrichina.ServerMonitor.domain.Images" fetch="select">
+            <column name="iconid_off" />
+        </many-to-one>
+        <property name="elementid" type="long">
+            <column name="elementid" not-null="true" />
+        </property>
+        <property name="elementtype" type="int">
+            <column name="elementtype" not-null="true" />
+        </property>
+        <property name="label" type="string">
+            <column name="label" length="2048" not-null="true" />
+        </property>
+        <property name="labelLocation" type="int">
+            <column name="label_location" not-null="true" />
+        </property>
+        <property name="x" type="int">
+            <column name="x" not-null="true" />
+        </property>
+        <property name="y" type="int">
+            <column name="y" not-null="true" />
+        </property>
+        <property name="elementsubtype" type="int">
+            <column name="elementsubtype" not-null="true" />
+        </property>
+        <property name="areatype" type="int">
+            <column name="areatype" not-null="true" />
+        </property>
+        <property name="width" type="int">
+            <column name="width" not-null="true" />
+        </property>
+        <property name="height" type="int">
+            <column name="height" not-null="true" />
+        </property>
+        <property name="viewtype" type="int">
+            <column name="viewtype" not-null="true" />
+        </property>
+        <property name="useIconmap" type="int">
+            <column name="use_iconmap" not-null="true" />
+        </property>
+        <property name="application" type="string">
+            <column name="application" not-null="true" />
+        </property>
+        <set name="sysmapElementUrls" table="sysmap_element_url" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="selementid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapElementUrl" />
+        </set>
+        <set name="sysmapsLinksesForSelementid2" table="sysmaps_links" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="selementid2" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsLinks" />
+        </set>
+        <set name="sysmapsLinksesForSelementid1" table="sysmaps_links" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="selementid1" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsLinks" />
+        </set>
+    </class>
+</hibernate-mapping>

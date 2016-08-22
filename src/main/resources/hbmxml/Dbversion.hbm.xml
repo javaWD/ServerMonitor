@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Dbversion" table="dbversion" catalog="mydb">
+        <composite-id name="id" class="cn.com.esrichina.ServerMonitor.domain.DbversionId">
+            <key-property name="mandatory" type="int">
+                <column name="mandatory" />
+            </key-property>
+            <key-property name="optional" type="int">
+                <column name="optional" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

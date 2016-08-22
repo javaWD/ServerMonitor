@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Sysmaps" table="sysmaps" catalog="mydb">
+        <id name="sysmapid" type="long">
+            <column name="sysmapid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="images" class="cn.com.esrichina.ServerMonitor.domain.Images" fetch="select">
+            <column name="backgroundid" />
+        </many-to-one>
+        <many-to-one name="iconMap" class="cn.com.esrichina.ServerMonitor.domain.IconMap" fetch="select">
+            <column name="iconmapid" />
+        </many-to-one>
+        <many-to-one name="users" class="cn.com.esrichina.ServerMonitor.domain.Users" fetch="select">
+            <column name="userid" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="128" not-null="true" unique="true" />
+        </property>
+        <property name="width" type="int">
+            <column name="width" not-null="true" />
+        </property>
+        <property name="height" type="int">
+            <column name="height" not-null="true" />
+        </property>
+        <property name="labelType" type="int">
+            <column name="label_type" not-null="true" />
+        </property>
+        <property name="labelLocation" type="int">
+            <column name="label_location" not-null="true" />
+        </property>
+        <property name="highlight" type="int">
+            <column name="highlight" not-null="true" />
+        </property>
+        <property name="expandproblem" type="int">
+            <column name="expandproblem" not-null="true" />
+        </property>
+        <property name="markelements" type="int">
+            <column name="markelements" not-null="true" />
+        </property>
+        <property name="showUnack" type="int">
+            <column name="show_unack" not-null="true" />
+        </property>
+        <property name="gridSize" type="int">
+            <column name="grid_size" not-null="true" />
+        </property>
+        <property name="gridShow" type="int">
+            <column name="grid_show" not-null="true" />
+        </property>
+        <property name="gridAlign" type="int">
+            <column name="grid_align" not-null="true" />
+        </property>
+        <property name="labelFormat" type="int">
+            <column name="label_format" not-null="true" />
+        </property>
+        <property name="labelTypeHost" type="int">
+            <column name="label_type_host" not-null="true" />
+        </property>
+        <property name="labelTypeHostgroup" type="int">
+            <column name="label_type_hostgroup" not-null="true" />
+        </property>
+        <property name="labelTypeTrigger" type="int">
+            <column name="label_type_trigger" not-null="true" />
+        </property>
+        <property name="labelTypeMap" type="int">
+            <column name="label_type_map" not-null="true" />
+        </property>
+        <property name="labelTypeImage" type="int">
+            <column name="label_type_image" not-null="true" />
+        </property>
+        <property name="labelStringHost" type="string">
+            <column name="label_string_host" not-null="true" />
+        </property>
+        <property name="labelStringHostgroup" type="string">
+            <column name="label_string_hostgroup" not-null="true" />
+        </property>
+        <property name="labelStringTrigger" type="string">
+            <column name="label_string_trigger" not-null="true" />
+        </property>
+        <property name="labelStringMap" type="string">
+            <column name="label_string_map" not-null="true" />
+        </property>
+        <property name="labelStringImage" type="string">
+            <column name="label_string_image" not-null="true" />
+        </property>
+        <property name="expandMacros" type="int">
+            <column name="expand_macros" not-null="true" />
+        </property>
+        <property name="severityMin" type="int">
+            <column name="severity_min" not-null="true" />
+        </property>
+        <property name="private_" type="int">
+            <column name="private" not-null="true" />
+        </property>
+        <set name="sysmapsElementses" table="sysmaps_elements" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sysmapid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsElements" />
+        </set>
+        <set name="sysmapUsrgrps" table="sysmap_usrgrp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sysmapid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapUsrgrp" />
+        </set>
+        <set name="sysmapUrls" table="sysmap_url" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sysmapid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapUrl" />
+        </set>
+        <set name="sysmapUsers" table="sysmap_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sysmapid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapUser" />
+        </set>
+        <set name="sysmapsLinkses" table="sysmaps_links" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sysmapid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapsLinks" />
+        </set>
+    </class>
+</hibernate-mapping>

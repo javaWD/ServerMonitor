@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.ApplicationTemplate" table="application_template" catalog="mydb">
+        <id name="applicationTemplateid" type="long">
+            <column name="application_templateid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="applicationsByApplicationid" class="cn.com.esrichina.ServerMonitor.domain.Applications" fetch="select">
+            <column name="applicationid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="applicationsByTemplateid" class="cn.com.esrichina.ServerMonitor.domain.Applications" fetch="select">
+            <column name="templateid" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

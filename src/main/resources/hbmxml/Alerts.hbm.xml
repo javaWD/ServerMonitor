@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Alerts" table="alerts" catalog="mydb">
+        <id name="alertid" type="long">
+            <column name="alertid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="events" class="cn.com.esrichina.ServerMonitor.domain.Events" fetch="select">
+            <column name="eventid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="actions" class="cn.com.esrichina.ServerMonitor.domain.Actions" fetch="select">
+            <column name="actionid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mediaType" class="cn.com.esrichina.ServerMonitor.domain.MediaType" fetch="select">
+            <column name="mediatypeid" />
+        </many-to-one>
+        <many-to-one name="users" class="cn.com.esrichina.ServerMonitor.domain.Users" fetch="select">
+            <column name="userid" />
+        </many-to-one>
+        <property name="clock" type="int">
+            <column name="clock" not-null="true" />
+        </property>
+        <property name="sendto" type="string">
+            <column name="sendto" length="100" not-null="true" />
+        </property>
+        <property name="subject" type="string">
+            <column name="subject" not-null="true" />
+        </property>
+        <property name="message" type="string">
+            <column name="message" length="65535" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="retries" type="int">
+            <column name="retries" not-null="true" />
+        </property>
+        <property name="error" type="string">
+            <column name="error" length="128" not-null="true" />
+        </property>
+        <property name="escStep" type="int">
+            <column name="esc_step" not-null="true" />
+        </property>
+        <property name="alerttype" type="int">
+            <column name="alerttype" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Groups" table="groups" catalog="mydb">
+        <id name="groupid" type="long">
+            <column name="groupid" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="64" not-null="true" />
+        </property>
+        <property name="internal" type="int">
+            <column name="internal" not-null="true" />
+        </property>
+        <property name="flags" type="int">
+            <column name="flags" not-null="true" />
+        </property>
+        <set name="groupPrototypes" table="group_prototype" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.GroupPrototype" />
+        </set>
+        <set name="rightses" table="rights" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Rights" />
+        </set>
+        <set name="configs" table="config" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="discovery_groupid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Config" />
+        </set>
+        <set name="opcommandGrps" table="opcommand_grp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.OpcommandGrp" />
+        </set>
+        <set name="scriptses" table="scripts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Scripts" />
+        </set>
+        <set name="hostsGroupses" table="hosts_groups" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.HostsGroups" />
+        </set>
+        <one-to-one name="groupDiscovery" class="cn.com.esrichina.ServerMonitor.domain.GroupDiscovery"></one-to-one>
+        <set name="opgroups" table="opgroup" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Opgroup" />
+        </set>
+        <set name="maintenancesGroupses" table="maintenances_groups" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.MaintenancesGroups" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Globalvars" table="globalvars" catalog="mydb">
+        <id name="globalvarid" type="long">
+            <column name="globalvarid" />
+            <generator class="assigned" />
+        </id>
+        <property name="snmpLastsize" type="int">
+            <column name="snmp_lastsize" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

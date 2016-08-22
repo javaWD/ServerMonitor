@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.History" table="history" catalog="mydb">
+        <composite-id name="id" class="cn.com.esrichina.ServerMonitor.domain.HistoryId">
+            <key-property name="itemid" type="long">
+                <column name="itemid" />
+            </key-property>
+            <key-property name="clock" type="int">
+                <column name="clock" />
+            </key-property>
+            <key-property name="value" type="double">
+                <column name="value" precision="16" scale="4" />
+            </key-property>
+            <key-property name="ns" type="int">
+                <column name="ns" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

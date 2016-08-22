@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Mappings" table="mappings" catalog="mydb">
+        <id name="mappingid" type="long">
+            <column name="mappingid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="valuemaps" class="cn.com.esrichina.ServerMonitor.domain.Valuemaps" fetch="select">
+            <column name="valuemapid" not-null="true" />
+        </many-to-one>
+        <property name="value" type="string">
+            <column name="value" length="64" not-null="true" />
+        </property>
+        <property name="newvalue" type="string">
+            <column name="newvalue" length="64" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

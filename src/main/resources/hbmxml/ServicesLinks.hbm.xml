@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.ServicesLinks" table="services_links" catalog="mydb">
+        <id name="linkid" type="long">
+            <column name="linkid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="servicesByServiceupid" class="cn.com.esrichina.ServerMonitor.domain.Services" fetch="select">
+            <column name="serviceupid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="servicesByServicedownid" class="cn.com.esrichina.ServerMonitor.domain.Services" fetch="select">
+            <column name="servicedownid" not-null="true" />
+        </many-to-one>
+        <property name="soft" type="int">
+            <column name="soft" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

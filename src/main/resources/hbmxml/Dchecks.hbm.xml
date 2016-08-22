@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Dchecks" table="dchecks" catalog="mydb">
+        <id name="dcheckid" type="long">
+            <column name="dcheckid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="drules" class="cn.com.esrichina.ServerMonitor.domain.Drules" fetch="select">
+            <column name="druleid" not-null="true" />
+        </many-to-one>
+        <property name="type" type="int">
+            <column name="type" not-null="true" />
+        </property>
+        <property name="key" type="string">
+            <column name="key_" not-null="true" />
+        </property>
+        <property name="snmpCommunity" type="string">
+            <column name="snmp_community" not-null="true" />
+        </property>
+        <property name="ports" type="string">
+            <column name="ports" not-null="true" />
+        </property>
+        <property name="snmpv3Securityname" type="string">
+            <column name="snmpv3_securityname" length="64" not-null="true" />
+        </property>
+        <property name="snmpv3Securitylevel" type="int">
+            <column name="snmpv3_securitylevel" not-null="true" />
+        </property>
+        <property name="snmpv3Authpassphrase" type="string">
+            <column name="snmpv3_authpassphrase" length="64" not-null="true" />
+        </property>
+        <property name="snmpv3Privpassphrase" type="string">
+            <column name="snmpv3_privpassphrase" length="64" not-null="true" />
+        </property>
+        <property name="uniq" type="int">
+            <column name="uniq" not-null="true" />
+        </property>
+        <property name="snmpv3Authprotocol" type="int">
+            <column name="snmpv3_authprotocol" not-null="true" />
+        </property>
+        <property name="snmpv3Privprotocol" type="int">
+            <column name="snmpv3_privprotocol" not-null="true" />
+        </property>
+        <property name="snmpv3Contextname" type="string">
+            <column name="snmpv3_contextname" not-null="true" />
+        </property>
+        <set name="dserviceses" table="dservices" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dcheckid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Dservices" />
+        </set>
+    </class>
+</hibernate-mapping>

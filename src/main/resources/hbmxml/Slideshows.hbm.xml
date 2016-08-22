@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Slideshows" table="slideshows" catalog="mydb">
+        <id name="slideshowid" type="long">
+            <column name="slideshowid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="users" class="cn.com.esrichina.ServerMonitor.domain.Users" fetch="select">
+            <column name="userid" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" not-null="true" unique="true" />
+        </property>
+        <property name="delay" type="int">
+            <column name="delay" not-null="true" />
+        </property>
+        <property name="private_" type="int">
+            <column name="private" not-null="true" />
+        </property>
+        <set name="slideses" table="slides" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="slideshowid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Slides" />
+        </set>
+        <set name="slideshowUsrgrps" table="slideshow_usrgrp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="slideshowid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SlideshowUsrgrp" />
+        </set>
+        <set name="slideshowUsers" table="slideshow_user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="slideshowid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SlideshowUser" />
+        </set>
+    </class>
+</hibernate-mapping>

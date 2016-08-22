@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.ApplicationPrototype" table="application_prototype" catalog="mydb">
+        <id name="applicationPrototypeid" type="long">
+            <column name="application_prototypeid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="items" class="cn.com.esrichina.ServerMonitor.domain.Items" fetch="select">
+            <column name="itemid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="applicationPrototype" class="cn.com.esrichina.ServerMonitor.domain.ApplicationPrototype" fetch="select">
+            <column name="templateid" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <set name="applicationPrototypes" table="application_prototype" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="templateid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ApplicationPrototype" />
+        </set>
+        <set name="itemApplicationPrototypes" table="item_application_prototype" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="application_prototypeid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ItemApplicationPrototype" />
+        </set>
+        <set name="applicationDiscoveries" table="application_discovery" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="application_prototypeid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ApplicationDiscovery" />
+        </set>
+    </class>
+</hibernate-mapping>

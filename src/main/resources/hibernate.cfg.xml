@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ Copyright (c) 2010, Red Hat Inc. or third-party contributors as
+  ~ indicated by the @author tags or express copyright attribution
+  ~ statements applied by the authors.  All third-party contributions are
+  ~ distributed under license by Red Hat Inc.
+  ~
+  ~ This copyrighted material is made available to anyone wishing to use, modify,
+  ~ copy, or redistribute it subject to the terms and conditions of the GNU
+  ~ Lesser General Public License, as published by the Free Software Foundation.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  ~ or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
+  ~ for more details.
+  ~
+  ~ You should have received a copy of the GNU Lesser General Public License
+  ~ along with this distribution; if not, write to:
+  ~ Free Software Foundation, Inc.
+  ~ 51 Franklin Street, Fifth Floor
+  ~ Boston, MA  02110-1301  USA
+  -->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://192.168.171.152:3306/mydb</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+		<property name="current_session_context_class">thread</property>
+        <!-- Drop and re-create the database schema on startup -->
+        <!-- create,create-drop,update, validate-->
+<!--         <property name="hbm2ddl.auto">update</property> -->
+        
+		<mapping resource="hbmxml/Acknowledges.hbm.xml"/>
+		<mapping resource="hbmxml/Actions.hbm.xml"/>
+		<mapping resource="hbmxml/Alerts.hbm.xml"/>
+		<mapping resource="hbmxml/ApplicationDiscovery.hbm.xml"/>
+		<mapping resource="hbmxml/ApplicationPrototype.hbm.xml"/>
+		<mapping resource="hbmxml/Applications.hbm.xml"/>
+		<mapping resource="hbmxml/ApplicationTemplate.hbm.xml"/>
+		<mapping resource="hbmxml/Auditlog.hbm.xml"/>
+		<mapping resource="hbmxml/AuditlogDetails.hbm.xml"/>
+		<mapping resource="hbmxml/AutoregHost.hbm.xml"/>
+		<mapping resource="hbmxml/Conditions.hbm.xml"/>
+		<mapping resource="hbmxml/Config.hbm.xml"/>
+		<mapping resource="hbmxml/Dbversion.hbm.xml"/>
+		<mapping resource="hbmxml/Dchecks.hbm.xml"/>
+		<mapping resource="hbmxml/Dhosts.hbm.xml"/>
+		<mapping resource="hbmxml/Drules.hbm.xml"/>
+		<mapping resource="hbmxml/Dservices.hbm.xml"/>
+		<mapping resource="hbmxml/Escalations.hbm.xml"/>
+		<mapping resource="hbmxml/EventA.hbm.xml"/>
+		<mapping resource="hbmxml/Events.hbm.xml"/>
+		<mapping resource="hbmxml/Expressions.hbm.xml"/>
+		<mapping resource="hbmxml/Functions.hbm.xml"/>
+		<mapping resource="hbmxml/Globalmacro.hbm.xml"/>
+		<mapping resource="hbmxml/Globalvars.hbm.xml"/>
+		<mapping resource="hbmxml/GraphDiscovery.hbm.xml"/>
+		<mapping resource="hbmxml/Graphs.hbm.xml"/>
+		<mapping resource="hbmxml/GraphsItems.hbm.xml"/>
+		<mapping resource="hbmxml/GraphTheme.hbm.xml"/>
+		<mapping resource="hbmxml/GroupDiscovery.hbm.xml"/>
+		<mapping resource="hbmxml/GroupPrototype.hbm.xml"/>
+		<mapping resource="hbmxml/Groups.hbm.xml"/>
+		<mapping resource="hbmxml/History.hbm.xml"/>
+		<mapping resource="hbmxml/HistoryLog.hbm.xml"/>
+		<mapping resource="hbmxml/HistoryStr.hbm.xml"/>
+		<mapping resource="hbmxml/HistoryText.hbm.xml"/>
+		<mapping resource="hbmxml/HistoryUint.hbm.xml"/>
+		<mapping resource="hbmxml/HostDiscovery.hbm.xml"/>
+		<mapping resource="hbmxml/HostInventory.hbm.xml"/>
+		<mapping resource="hbmxml/Hostmacro.hbm.xml"/>
+		<mapping resource="hbmxml/Hosts.hbm.xml"/>
+		<mapping resource="hbmxml/HostsGroups.hbm.xml"/>
+		<mapping resource="hbmxml/HostsTemplates.hbm.xml"/>
+		<mapping resource="hbmxml/Housekeeper.hbm.xml"/>
+		<mapping resource="hbmxml/Httpstep.hbm.xml"/>
+		<mapping resource="hbmxml/Httpstepitem.hbm.xml"/>
+		<mapping resource="hbmxml/Httptest.hbm.xml"/>
+		<mapping resource="hbmxml/Httptestitem.hbm.xml"/>
+		<mapping resource="hbmxml/IconMap.hbm.xml"/>
+		<mapping resource="hbmxml/IconMapping.hbm.xml"/>
+		<mapping resource="hbmxml/Ids.hbm.xml"/>
+		<mapping resource="hbmxml/Images.hbm.xml"/>
+		<mapping resource="hbmxml/Interface.hbm.xml"/>
+		<mapping resource="hbmxml/InterfaceDiscovery.hbm.xml"/>
+		<mapping resource="hbmxml/ItemApplicationPrototype.hbm.xml"/>
+		<mapping resource="hbmxml/ItemCondition.hbm.xml"/>
+		<mapping resource="hbmxml/ItemDiscovery.hbm.xml"/>
+		<mapping resource="hbmxml/Items.hbm.xml"/>
+		<mapping resource="hbmxml/ItemsApplications.hbm.xml"/>
+		
+		<mapping resource="hbmxml/Maintenances.hbm.xml"/>
+		<mapping resource="hbmxml/MaintenancesGroups.hbm.xml"/>
+		<mapping resource="hbmxml/MaintenancesHosts.hbm.xml"/>
+		<mapping resource="hbmxml/MaintenancesWindows.hbm.xml"/>
+		<mapping resource="hbmxml/Mappings.hbm.xml"/>
+		<mapping resource="hbmxml/Media.hbm.xml"/>
+		<mapping resource="hbmxml/MediaType.hbm.xml"/>
+		<mapping resource="hbmxml/Opcommand.hbm.xml"/>
+		<mapping resource="hbmxml/OpcommandGrp.hbm.xml"/>
+		<mapping resource="hbmxml/OpcommandHst.hbm.xml"/>
+		<mapping resource="hbmxml/Opconditions.hbm.xml"/>
+		<mapping resource="hbmxml/Operations.hbm.xml"/>
+		<mapping resource="hbmxml/Opgroup.hbm.xml"/>
+		<mapping resource="hbmxml/Opinventory.hbm.xml"/>
+		<mapping resource="hbmxml/Opmessage.hbm.xml"/>
+		<mapping resource="hbmxml/OpmessageGrp.hbm.xml"/>
+		<mapping resource="hbmxml/OpmessageUsr.hbm.xml"/>
+		<mapping resource="hbmxml/Optemplate.hbm.xml"/>
+		<mapping resource="hbmxml/Profiles.hbm.xml"/>
+		<mapping resource="hbmxml/ProxyAutoregHost.hbm.xml"/>
+		<mapping resource="hbmxml/ProxyDhistory.hbm.xml"/>
+		<mapping resource="hbmxml/ProxyHistory.hbm.xml"/>
+		<mapping resource="hbmxml/Regexps.hbm.xml"/>
+		<mapping resource="hbmxml/Rights.hbm.xml"/>
+		<mapping resource="hbmxml/Screens.hbm.xml"/>
+		<mapping resource="hbmxml/ScreensItems.hbm.xml"/>
+		<mapping resource="hbmxml/ScreenUser.hbm.xml"/>
+		<mapping resource="hbmxml/ScreenUsrgrp.hbm.xml"/>
+		<mapping resource="hbmxml/Scripts.hbm.xml"/>
+		<mapping resource="hbmxml/ServiceAlarms.hbm.xml"/>
+		<mapping resource="hbmxml/Services.hbm.xml"/>
+		<mapping resource="hbmxml/ServicesLinks.hbm.xml"/>
+		<mapping resource="hbmxml/ServicesTimes.hbm.xml"/>
+		<mapping resource="hbmxml/Sessions.hbm.xml"/>
+		<mapping resource="hbmxml/Slides.hbm.xml"/>
+		<mapping resource="hbmxml/Slideshows.hbm.xml"/>
+		<mapping resource="hbmxml/SlideshowUser.hbm.xml"/>
+		<mapping resource="hbmxml/SlideshowUsrgrp.hbm.xml"/>
+		<mapping resource="hbmxml/SysmapElementUrl.hbm.xml"/>
+		<mapping resource="hbmxml/Sysmaps.hbm.xml"/>
+		<mapping resource="hbmxml/SysmapsElements.hbm.xml"/>
+		<mapping resource="hbmxml/SysmapsLinks.hbm.xml"/>
+		<mapping resource="hbmxml/SysmapsLinkTriggers.hbm.xml"/>
+		<mapping resource="hbmxml/SysmapUrl.hbm.xml"/>
+		<mapping resource="hbmxml/SysmapUser.hbm.xml"/>
+		<mapping resource="hbmxml/SysmapUsrgrp.hbm.xml"/>
+		<mapping resource="hbmxml/Timeperiods.hbm.xml"/>
+		<mapping resource="hbmxml/Trends.hbm.xml"/>
+		<mapping resource="hbmxml/TrendsUint.hbm.xml"/>
+		<mapping resource="hbmxml/TriggerDepends.hbm.xml"/>
+		<mapping resource="hbmxml/TriggerDiscovery.hbm.xml"/>
+		<mapping resource="hbmxml/Triggers.hbm.xml"/>
+		<mapping resource="hbmxml/Users.hbm.xml"/>
+		<mapping resource="hbmxml/UsersGroups.hbm.xml"/>
+		<mapping resource="hbmxml/Usrgrp.hbm.xml"/>
+		<mapping resource="hbmxml/Valuemaps.hbm.xml"/>
+
+
+
+    </session-factory>
+
+</hibernate-configuration>

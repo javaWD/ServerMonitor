@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.TriggerDiscovery" table="trigger_discovery" catalog="mydb">
+        <id name="triggerid" type="long">
+            <column name="triggerid" />
+            <generator class="foreign">
+                <param name="property">triggersByTriggerid</param>
+            </generator>
+        </id>
+        <many-to-one name="triggersByParentTriggerid" class="cn.com.esrichina.ServerMonitor.domain.Triggers" fetch="select">
+            <column name="parent_triggerid" not-null="true" />
+        </many-to-one>
+        <one-to-one name="triggersByTriggerid" class="cn.com.esrichina.ServerMonitor.domain.Triggers" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

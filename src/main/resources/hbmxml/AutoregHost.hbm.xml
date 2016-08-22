@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.AutoregHost" table="autoreg_host" catalog="mydb">
+        <id name="autoregHostid" type="long">
+            <column name="autoreg_hostid" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hosts" class="cn.com.esrichina.ServerMonitor.domain.Hosts" fetch="select">
+            <column name="proxy_hostid" />
+        </many-to-one>
+        <property name="host" type="string">
+            <column name="host" length="64" not-null="true" />
+        </property>
+        <property name="listenIp" type="string">
+            <column name="listen_ip" length="39" not-null="true" />
+        </property>
+        <property name="listenPort" type="int">
+            <column name="listen_port" not-null="true" />
+        </property>
+        <property name="listenDns" type="string">
+            <column name="listen_dns" length="64" not-null="true" />
+        </property>
+        <property name="hostMetadata" type="string">
+            <column name="host_metadata" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

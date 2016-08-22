@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.GraphDiscovery" table="graph_discovery" catalog="mydb">
+        <id name="graphid" type="long">
+            <column name="graphid" />
+            <generator class="foreign">
+                <param name="property">graphsByGraphid</param>
+            </generator>
+        </id>
+        <many-to-one name="graphsByParentGraphid" class="cn.com.esrichina.ServerMonitor.domain.Graphs" fetch="select">
+            <column name="parent_graphid" not-null="true" />
+        </many-to-one>
+        <one-to-one name="graphsByGraphid" class="cn.com.esrichina.ServerMonitor.domain.Graphs" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

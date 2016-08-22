@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-18 11:14:22 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="cn.com.esrichina.ServerMonitor.domain.Usrgrp" table="usrgrp" catalog="mydb">
+        <id name="usrgrpid" type="long">
+            <column name="usrgrpid" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="64" not-null="true" unique="true" />
+        </property>
+        <property name="guiAccess" type="int">
+            <column name="gui_access" not-null="true" />
+        </property>
+        <property name="usersStatus" type="int">
+            <column name="users_status" not-null="true" />
+        </property>
+        <property name="debugMode" type="int">
+            <column name="debug_mode" not-null="true" />
+        </property>
+        <set name="opmessageGrps" table="opmessage_grp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usrgrpid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.OpmessageGrp" />
+        </set>
+        <set name="slideshowUsrgrps" table="slideshow_usrgrp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usrgrpid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SlideshowUsrgrp" />
+        </set>
+        <set name="usersGroupses" table="users_groups" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usrgrpid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.UsersGroups" />
+        </set>
+        <set name="rightses" table="rights" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="groupid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Rights" />
+        </set>
+        <set name="scriptses" table="scripts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usrgrpid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Scripts" />
+        </set>
+        <set name="configs" table="config" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="alert_usrgrpid" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.Config" />
+        </set>
+        <set name="sysmapUsrgrps" table="sysmap_usrgrp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usrgrpid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.SysmapUsrgrp" />
+        </set>
+        <set name="screenUsrgrps" table="screen_usrgrp" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usrgrpid" not-null="true" />
+            </key>
+            <one-to-many class="cn.com.esrichina.ServerMonitor.domain.ScreenUsrgrp" />
+        </set>
+    </class>
+</hibernate-mapping>
