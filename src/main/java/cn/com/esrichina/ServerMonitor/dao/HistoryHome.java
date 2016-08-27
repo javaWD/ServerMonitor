@@ -156,7 +156,7 @@ public class HistoryHome {
 	 * 通过查询选项，查询历史监控信息
 	 * @param queryHistoryOption
 	 */
-	public List<History> getHistoryByItemId(QueryHistoryOption queryHistoryOption) {
+	public List<History> getHistoryByQueryHistoryOption(QueryHistoryOption queryHistoryOption) {
 		// TODO Auto-generated method stub
 		Long itemid=queryHistoryOption.getItemId();
 		int start=queryHistoryOption.getQueryStart();

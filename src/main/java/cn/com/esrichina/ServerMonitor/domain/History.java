@@ -23,5 +23,11 @@ public class History implements java.io.Serializable {
 	public void setId(HistoryId id) {
 		this.id = id;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "[itemId:"+id.getItemid()+";clock:"+id.getClock()+";value:"+id.getValue()+"]";
+	}
 
 }
