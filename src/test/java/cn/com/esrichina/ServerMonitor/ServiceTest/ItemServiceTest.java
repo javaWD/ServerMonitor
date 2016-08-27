@@ -1,17 +1,27 @@
 package cn.com.esrichina.ServerMonitor.ServiceTest;
 
+import java.util.List;
+
 import javax.annotation.Resource;
+
+import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import cn.com.esrichina.ServerMonitor.MethodTable.MonitorConstants;
 import cn.com.esrichina.ServerMonitor.domain.Items;
 import cn.com.esrichina.ServerMonitor.services.ItemService;
+import cn.com.esrichina.ServerMonitor.web.vo.ItemsVO;
 import cn.com.esrichina.genericdao.search.Search;
-import junit.framework.TestCase;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"classpath:applicationContext.xml"})
 public class ItemServiceTest extends TestCase{
 	
 	private String sortBy;
@@ -23,23 +33,34 @@ public class ItemServiceTest extends TestCase{
 	}
 	
 	@Resource
-	public ItemService itemService=new ItemService();
+	public ItemService itemService;
 	
 	
 	@Test
 	public void testItemService(){
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		Search search = new Search(Items.class);
-		search.setFirstResult(0);
-		search.setMaxResults(100);
-		if (sortBy != null && sortDesc != null) {
-			search.addSort(sortBy, sortDesc);
-		} else {
-			search.addSort("hosts.id", true);
-		}
+		//ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+//		Search search = new Search(Items.class);
+//		search.setFirstResult(0);
+//		search.setMaxResults(100);
+//		if (sortBy != null && sortDesc != null) {
+//			search.addSort(sortBy, sortDesc);
+//		} else {
+//			search.addSort("itemid", true);
+//		}
+//		
+//		search.addFilterEqual("itemid",10013);
+//		ItemService itemService=context.getBean(ItemService.class);
+//		itemService.searchItems(search);
+		List<Items> listItems=itemService.searchItemsByHostId(MonitorConstants.HostId);
 		
-		search.addFilterEqual("hosts.id",10084);
-		itemService.searchItems(search);
+	}
+	
+	@Test
+	public void testVOUtil(){
+		Items items=itemService.searchItemsByID(MonitorConstants.ItemsId);
+		ItemsVO itemsVO=new ItemsVO(items);
+		
+		System.out.println(itemsVO.toString());
 	}
 	
 }

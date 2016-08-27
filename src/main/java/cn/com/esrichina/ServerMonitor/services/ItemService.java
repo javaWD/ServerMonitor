@@ -1,10 +1,13 @@
 package cn.com.esrichina.ServerMonitor.services;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import cn.com.esrichina.ServerMonitor.Repository.ItemsRepository;
+import cn.com.esrichina.ServerMonitor.dao.ItemsHome;
 import cn.com.esrichina.ServerMonitor.domain.Items;
 import cn.com.esrichina.genericdao.search.Search;
 import cn.com.esrichina.genericdao.search.SearchResult;
@@ -13,11 +16,22 @@ import cn.com.esrichina.genericdao.search.SearchResult;
 public class ItemService {
 
 	@Resource
-	private ItemsRepository itemsRepository;
+	private ItemsHome itemsHome;
 	
-	public SearchResult<Items> searchItems(Search search){
-		
-		return itemsRepository.searchAndCount(search);
+	public ItemService() {
+		// TODO Auto-generated constructor stub
 	}
 	
+	public List<Items> searchItems(Search search){
+		
+		return itemsHome.searchAndCount(search);
+	}
+	
+	public List<Items> searchItemsByHostId(Long hostId){
+		return itemsHome.getItemsByHostId(hostId);
+	}
+	
+	public Items searchItemsByID(Long id){
+		return itemsHome.findById(id);
+	}
 }

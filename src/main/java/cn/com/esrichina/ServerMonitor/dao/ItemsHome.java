@@ -16,6 +16,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
 
 import cn.com.esrichina.ServerMonitor.domain.Items;
+import cn.com.esrichina.genericdao.search.Search;
+import cn.com.esrichina.genericdao.search.SearchResult;
 
 /**
  * Home object for domain model class Items.
@@ -176,6 +178,11 @@ public class ItemsHome {
 	 */
 	public Items getItemsByItemsId(Long itemsId) {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Items> searchAndCount(Search search) {
+		
 		return null;
 	}
 }

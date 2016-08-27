@@ -27,59 +27,65 @@
 
 
 
-	<aop:aspectj-autoproxy />
+<!-- 	<aop:aspectj-autoproxy />
 
 	<context:component-scan base-package="cn.com.esrichina"></context:component-scan>
 	<task:annotation-driven />
 	<tx:annotation-driven proxy-target-class="true" />
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
-	<cache:annotation-driven />
+	<cache:annotation-driven /> -->
 
 
-	<!-- 数据库相关的配置...... -->
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="gcloud" />
-		<property name="jpaVendorAdapter">
-			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
-		</property>
-		<property name="loadTimeWeaver">
-			<bean
-				class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
-		</property>
-	</bean>
+<!-- 数据库相关的配置...... -->
+<!-- 	<bean id="entityManagerFactory" -->
+<!-- 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
+<!-- 		<property name="persistenceUnitName" value="gcloud" /> -->
+<!-- 		<property name="jpaVendorAdapter"> -->
+<!-- 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean> -->
+<!-- 		</property> -->
+<!-- 		<property name="loadTimeWeaver"> -->
+<!-- 			<bean -->
+<!-- 				class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" /> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
 
 
 
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-	</bean>
+<!-- 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"> -->
+<!-- 		<property name="entityManagerFactory" ref="entityManagerFactory" /> -->
+<!-- 	</bean> -->
 
-	<bean
-		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+<!-- 	<bean -->
+<!-- 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" /> -->
 
 	<!-- DAO的配置...... -->
-	<bean id="searchProcessor"
-		class="cn.com.esrichina.genericdao.search.jpa.JPASearchProcessor">
-		<constructor-arg ref="metadataUtil" />
+<!-- 	<bean id="searchProcessor" -->
+<!-- 		class="cn.com.esrichina.genericdao.search.jpa.JPASearchProcessor"> -->
+<!-- 		<constructor-arg ref="metadataUtil" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="metadataUtil" -->
+<!-- 		class="cn.com.esrichina.genericdao.search.jpa.JPAAnnotationMetadataUtil"> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="ehCacheCacheManager" -->
+<!-- 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" -->
+<!-- 		p:configLocation="classpath:ehcache.xml" p:shared="false" /> -->
+
+<!-- 	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" -->
+<!-- 		p:cacheManager-ref="ehCacheCacheManager" /> -->
+
+<!-- 	<bean id="itemsRepository" -->
+<!-- 		class="cn.com.esrichina.ServerMonitor.Repository.ItemsRepository"> -->
+<!-- 	</bean> -->
+
+	<bean id="itemService"
+		class="cn.com.esrichina.ServerMonitor.services.ItemService">
 	</bean>
-
-	<bean id="metadataUtil"
-		class="cn.com.esrichina.genericdao.search.jpa.JPAAnnotationMetadataUtil">
+	
+	<bean id="itemsHome"
+		class="cn.com.esrichina.ServerMonitor.dao.ItemsHome">
 	</bean>
-
-	<bean id="ehCacheCacheManager"
-		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-		p:configLocation="classpath:ehcache.xml" p:shared="false" />
-
-	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
-		p:cacheManager-ref="ehCacheCacheManager" />
-
-	<bean id="itemsRepository"
-		class="cn.com.esrichina.ServerMonitor.Repository.ItemsRepository">
-	</bean>
-
-
 
 </beans>

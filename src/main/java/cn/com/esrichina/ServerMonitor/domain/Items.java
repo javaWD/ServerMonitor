@@ -619,7 +619,10 @@ public class Items  implements java.io.Serializable {
 		this.interfaceid = interfaceid;
 	}
 
-
+	@Override
+	public String toString() {
+		return "["+this.itemid+this.hosts.getHostid()+this.name+this.key+"]";
+	}
 
 
 }
